@@ -1,0 +1,136 @@
+<!DOCTYPE html>  
+<html lang="uk">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Графік Сервісу</title>  
+    <style>  
+        body { font-family: Arial, sans-serif; }  
+        table { width: 100%; border-collapse: collapse; }  
+        th, td { border: 1px solid #000; padding: 10px; text-align: left; }  
+        th { background-color: #f2f2f2; }  
+    </style>  
+</head>  
+<body>  
+    <h1>Графік сервісу з Понеділка по Пʼятницю</h1>  
+    <table>  
+        <thead>  
+            <tr>  
+                <th>День</th>  
+                <th>Запис 1</th>  
+                <th>Запис 2</th>  
+                <th>Запис 3</th>  
+                <th>Запис 4</th>  
+                <th>Запис 5</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            <tr>  
+                <td>Понеділок</td>  
+                <td>Запис A1</td>  
+                <td>Запис A2</td>  
+                <td>Запис A3</td>  
+                <td>Запис A4</td>  
+                <td>Запис A5</td>  
+            </tr>  
+            <tr>  
+                <td>Вівторок</td>  
+                <td>Запис B1</td>  
+                <td>Запис B2</td>  
+                <td>Запис B3</td>  
+                <td>Запис B4</td>  
+                <td>Запис B5</td>  
+            </tr>  
+            <tr>  
+                <td>Середа</td>  
+                <td>Запис C1</td>  
+                <td>Запис C2</td>  
+                <td>Запис C3</td>  
+                <td>Запис C4</td>  
+                <td>Запис C5</td>  
+            </tr>  
+            <tr>  
+                <td>Четвер</td>  
+                <td>Запис D1</td>  
+                <td>Запис D2</td>  
+                <td>Запис D3</td>  
+                <td>Запис D4</td>  
+                <td>Запис D5</td>  
+            </tr>  
+            <tr>  
+                <td>Пʼятниця</td>  
+                <td>Запис E1</td>  
+                <td>Запис E2</td>  
+                <td>Запис E3</td>  
+                <td>Запис E4</td>  
+                <td>Запис E5</td>  
+            </tr>  
+        </tbody>  
+    </table>  
+</body>  
+</html>
+
+@GetMapping("/schedule")  
+public String getSchedulePage() {  
+    return "schedule"; // повертати `schedule.html`  
+}
+
+<!DOCTYPE html>  
+<html lang="uk">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Вхід для Адміністратора</title>  
+</head>  
+<body>  
+    <h1>Вхід для Адміністратора</h1>  
+    <form action="/api/auth/login" method="POST">  
+        <label for="username">Логін:</label><br>  
+        <input type="text" id="username" name="username" required><br>  
+        <label for="password">Пароль:</label><br>  
+        <input type="password" id="password" name="password" required><br><br>  
+        <button type="submit">Увійти</button>  
+    </form>  
+</body>  
+</html>
+
+// Додайте в контролер для адмін-панелі  
+@PostMapping("/admin/entities")  
+public ResponseEntity<String> createEntity(@RequestBody CarServiceDTO dto) {  
+    // Логіка для створення сутності  
+    return ResponseEntity.ok("Сутність додано.");  
+}  
+
+@PutMapping("/admin/entities/{id}")  
+public ResponseEntity<String> updateEntity(@PathVariable Long id, @RequestBody CarServiceDTO dto) {  
+    // Логіка для оновлення сутності  
+    return ResponseEntity.ok("Сутність оновлено.");  
+}  
+
+@DeleteMapping("/admin/entities/{id}")  
+public ResponseEntity<String> deleteEntity(@PathVariable Long id) {  
+    // Логіка для видалення сутності  
+    return ResponseEntity.ok("Сутність видалено.");  
+}
+
+<!DOCTYPE html>  
+<html lang="uk">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Управління Сутностями</title>  
+</head>  
+<body>  
+    <h1>Управління Сутностями</h1>  
+    <table>  
+        <!-- Додати таблицю для відображення сутностей з кнопками для редагування та видалення -->  
+    </table>  
+    <form action="/admin/entities" method="POST">  
+        <h2>Додати нову сутність</h2>  
+        <!-- Поля для сутності -->  
+        <button type="submit">Створити</button>  
+    </form>  
+</body>  
+</html>
+
+git checkout -b day-5
